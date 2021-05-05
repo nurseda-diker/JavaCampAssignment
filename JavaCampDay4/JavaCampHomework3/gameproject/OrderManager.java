@@ -5,10 +5,20 @@ public class OrderManager implements OrderService{
     
     
     Campaign campaign;
+    PlayerCheckService playerCheckService;
+   
+    public OrderManager(){
+        
+    }
+    
+    public OrderManager(PlayerCheckService playerCheckService){
+        this.playerCheckService=playerCheckService;
+    }
    
     
     @Override
     public void add(Order order) {
+      if(this.playerCheckService.checkPlayer(order.getPlayer())){
         if(campaign!=null){
             
             double price=order.getProduct().getPrice();
@@ -20,6 +30,7 @@ public class OrderManager implements OrderService{
             System.out.println("Sipariş eklendi.\nSipariş id: "+order.getId()+"\nÜrün adı: "+order.getProduct().getName() + 
                                             "\nYeni fiyat: "+ price);
         }
+      }
     }
 
     @Override
