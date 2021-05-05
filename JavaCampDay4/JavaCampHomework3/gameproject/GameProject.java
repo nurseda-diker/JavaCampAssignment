@@ -13,7 +13,7 @@ public class GameProject {
         productManager.add(game1);
         
         Order order1 =new Order(1,player1,game1);
-        OrderManager ordermanager=new OrderManager();
+        OrderManager ordermanager=new OrderManager(new PlayerCheckManager());
         ordermanager.add(order1);
         
         Campaign campaign1=new Campaign(1,"%15 discount",15);
